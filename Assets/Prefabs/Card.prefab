@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2761530934649392379}
   - component: {fileID: 8513817421434322612}
-  - component: {fileID: 5815213681614466547}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -158,27 +157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122107578284413818}
   m_CullTransparentMesh: 0
---- !u!114 &5815213681614466547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122107578284413818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d40088a6124c578ad6b428df586e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pivot: {x: 0.5, y: 0.5}
-  m_anchorPosition: 4
-  m_rect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  m_margins: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2233228703236265203
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89251b02c8869eb4bb3c4608717dfcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 8d799e0e405ffc446a9f97bebbe0a92d, type: 2}
+  card: {fileID: 11400000, guid: 9688f24c31a8fb34fb0f0d8b15b8931c, type: 2}
   title: {fileID: 518617248875398693}
   artworkImage: {fileID: 6869178960396624076}
   cost: {fileID: 514630237276587088}

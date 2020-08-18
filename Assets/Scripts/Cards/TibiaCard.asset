@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   artwork: {fileID: 21300000, guid: 14d96b2972183c54a9db7708cb51b35c, type: 3}
   title: fever
-  description: csds
-  cost: 24
+  description: Desc
+  cost: 25
   hp: 0
   minDmg: 0
   maxDmg: 0
   exp: 0
+  id: 8d799e0e405ffc446a9f97bebbe0a92d
+  prefab: {fileID: 237153626416014054, guid: 677fb10dd447876439b9a1fa524f0475, type: 3}
+  owner: {fileID: 0}

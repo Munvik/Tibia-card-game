@@ -11,9 +11,10 @@ public class Menager : MonoBehaviour
     int enemyDeckCardsnumber;
     int enemyhandCardsNumber;
 
-    public Card testCard;
+    public Deck testDeck; //na potrzeby testow
 
     public Deck myDeck;
+    public Hand myHand;
     int fatigue = 0;
 
     // Start is called before the first frame update
@@ -28,7 +29,6 @@ public class Menager : MonoBehaviour
         enemyhandCardsNumber = enemyHandSize;
 
 
-        myDeck.initDeck();
 
     }
 
@@ -37,12 +37,19 @@ public class Menager : MonoBehaviour
 
         if (instance)
         {
-
             Debug.Log("Proba utworzenia drugiej instancji Menadzera !");
         }
-
+   
         instance = this;
-        myDeck.initDeck();
+
+        foreach(Card card in testDeck.cards)
+        {
+            card.CreateCardInstance(this.transform);
+        }
+
+        //drawCards(5);
+
+
     }
 
     // Update is called once per frame
@@ -57,7 +64,12 @@ public class Menager : MonoBehaviour
 
     private void handleFullHandDraw()
     {
-        //TODO
+        Debug.Log("Full hand!");
+    }
+
+    private void handleEmptyDeck()
+    {
+        Debug.Log("No cards in deck!");
     }
 
     public void drawCards(int number)
@@ -66,38 +78,40 @@ public class Menager : MonoBehaviour
         for(int i=0; i<number; i++)
         {
             int currentDeckSize = myDeck.cards.Count;
+            Debug.Log("Decksize = " + currentDeckSize);
 
 
             if(currentDeckSize>0)
             {     
-                GameObject myHand = GameObject.Find("MyHand");
-
-                HandHandler handHndl = myHand.GetComponent<HandHandler>();
-
-                if(handHndl!=null)
-                {
-                    if(!handHndl.full)
+                    if(!myHand.full)
                     {
-                        handHndl.drawCard(myDeck.cards[currentDeckSize - 1]);
+                        myHand.drawCard(myDeck.getTop());
                     }
                     else
                     {
                         handleFullHandDraw();
-                    }
-                }
-                else
-                {
-                    Debug.Log("Cannot find hand handler component in " + transform.name);
-                }
-
-                
+                    }       
+            }
+            else
+            {
+                handleEmptyDeck();
             }
         }
+
+        Debug.Log("From Menager, handSize is " + myHand.handCards.Count);
     }
 
     public void drawSingleCard()
     {
 
+    }
+
+    private void drawDeckIDs(List<Card> cards)
+    {
+        foreach(Card card in cards)
+        {
+            Debug.Log("Cards with testing deck id = " + card.GetInstanceID());
+        }
     }
 
 
