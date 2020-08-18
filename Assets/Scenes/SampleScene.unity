@@ -1568,6 +1568,8 @@ MonoBehaviour:
   testDeck: {fileID: 1930865280}
   myDeck: {fileID: 85332726}
   myHand: {fileID: 905491221534923673}
+  myplayer: {fileID: 0}
+  enemyPlayer: {fileID: 0}
 --- !u!224 &906288932 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8015265918601561082, guid: 677fb10dd447876439b9a1fa524f0475,
@@ -3942,6 +3944,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d799e0e405ffc446a9f97bebbe0a92d, type: 2}
   - {fileID: 11400000, guid: 9688f24c31a8fb34fb0f0d8b15b8931c, type: 2}
   - {fileID: 11400000, guid: 8d799e0e405ffc446a9f97bebbe0a92d, type: 2}
+  displayCards: []
   templateCard: {fileID: 0}
   stackOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &1930865281
@@ -5393,6 +5396,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 237153626416014054, guid: 677fb10dd447876439b9a1fa524f0475,
+        type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d799e0e405ffc446a9f97bebbe0a92d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 677fb10dd447876439b9a1fa524f0475, type: 3}
 --- !u!1001 &1953192892908262853

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6082846360387516126, guid: 9763847e93f7d5144bdc2b614fa149ec,
         type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Knight
       objectReference: {fileID: 0}
     - target: {fileID: 4339691759338239215, guid: 9763847e93f7d5144bdc2b614fa149ec,
         type: 3}
@@ -117,5 +117,28 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8109319855327851604, guid: 9763847e93f7d5144bdc2b614fa149ec,
+        type: 3}
+      propertyPath: avatarArtwork
+      value: 
+      objectReference: {fileID: 6315961123730969065}
+    - target: {fileID: 8109319855327851604, guid: 9763847e93f7d5144bdc2b614fa149ec,
+        type: 3}
+      propertyPath: vocation
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c8df7db15673ad41ba2c7fe306c0d34,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9763847e93f7d5144bdc2b614fa149ec, type: 3}
+--- !u!114 &6315961123730969065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6263162070672638540, guid: 9763847e93f7d5144bdc2b614fa149ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 94001189725524901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

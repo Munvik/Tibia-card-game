@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Wallet : MonoBehaviour
 {
-    public PlayerClass vocation;
-    public HpBar hpbar;
-
-    public Image avatarArtwork;
+    public Text amount;
     // Start is called before the first frame update
     void Start()
     {
-        avatarArtwork.sprite = vocation.avatarArtwork;
-        hpbar.init(vocation.hp);
+        
     }
 
     // Update is called once per frame

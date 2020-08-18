@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<Card> handCards;
+    public List<CardDisplay> handCards;
     public Deck deck;
     public int maxHandSize = 12;
     public bool full = false;
@@ -13,7 +13,7 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
-        handCards = new List<Card>();
+        handCards = new List<CardDisplay>();
     }
 
     // Update is called once per frame
@@ -26,18 +26,19 @@ public class Hand : MonoBehaviour
     {
     }
 
-    public void drawCard(Card card)
+    public void drawCard(CardDisplay card)
     {
-        Debug.Log("Drawing card with id = " + card.owner.GetInstanceID());
+        Debug.Log("Drawing card with id = " + card.GetInstanceID());
+        deck.displayCards.Remove(card);
         putInto(card);
-        deck.cards.Remove(card);     
+             
     }
 
-    public void putInto(Card card)
+    public void putInto(CardDisplay card)
     {
-        
-       
-        card.changeParent(transform.gameObject);
+
+
+        card.changeParent(transform);
         handCards.Add(card);
 
         Debug.Log("handcards.size = " + handCards.Count);

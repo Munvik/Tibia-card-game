@@ -5,6 +5,7 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     public List<Card> cards;
+    public List<CardDisplay> displayCards;
 
     public RectTransform templateCard;
     public Vector3 stackOffset = new Vector3(100f, 100f, 20f);
@@ -16,7 +17,7 @@ public class Deck : MonoBehaviour
 
     public Deck(List<Card> deck)
     {
-        cards = deck;
+        
     }
 
     // Update is called once per frame
@@ -26,20 +27,20 @@ public class Deck : MonoBehaviour
     }
 
 
-    public void shuffleInto(Card card)
+    public void shuffleInto(CardDisplay card)
     {
-        cards.Add(Instantiate(card));
+        displayCards.Add(card);
+        Debug.Log("From shuffleinto and the newest card has id = " + getTop().GetInstanceID());
+        CardDisplay newestCard = getTop();
 
-        Card existingCard = getTop();
-        existingCard.CreateCardInstance();
-        existingCard.setRectTransform(templateCard);
-        existingCard.turnBack();
+        newestCard.setRectTransform(templateCard);
+        newestCard.turnBack();
 
-        float x = templateCard.position.x + cards.Count * stackOffset.x;
-        float y = templateCard.position.y + cards.Count * stackOffset.y;
-        float z = templateCard.position.z + cards.Count * stackOffset.z;
+        float x = templateCard.position.x + displayCards.Count * stackOffset.x;
+        float y = templateCard.position.y + displayCards.Count * stackOffset.y;
+        float z = templateCard.position.z + displayCards.Count * stackOffset.z;
         Vector3 newPosition = new Vector3(x, y, z);
-        existingCard.setPosition(newPosition);
+        newestCard.setPosition(newPosition);
 
     }
 
@@ -49,13 +50,16 @@ public class Deck : MonoBehaviour
         
         foreach(Card card in cards_)
         {
-            shuffleInto(card);           
+            var newest = card.CreateCardInstance(transform);
+            
+            newest.Init(newest.card);
+            shuffleInto(newest);           
         }
     }
 
-    public Card getTop()
+    public CardDisplay getTop()
     {
-        return cards[cards.Count - 1];
+        return displayCards[displayCards.Count - 1];
     }
 
 

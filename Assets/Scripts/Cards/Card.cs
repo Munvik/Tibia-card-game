@@ -23,29 +23,34 @@ public class Card : ScriptableObject
     
     public GameObject owner;
 
-    public void CreateCardInstance(Transform parent)
-    {
-        GameObject deck = GameObject.Find("MyDeck");
+    //public void CreateCardInstance(Transform parent)
+    //{
+    //    GameObject deck = GameObject.Find("MyDeck");
 
-        prefab.card = Instantiate(this);
-        owner = Instantiate(prefab.gameObject, parent);
+    //    prefab.card = Instantiate(this);
+    //    owner = Instantiate(prefab.gameObject, parent);
         
-    }
+    //}
 
-    public void CreateCardInstance()
+    //public void CreateCardInstance()
+    //{
+    //    GameObject deck = GameObject.Find("MyDeck");
+
+    //    owner = Instantiate(prefab.gameObject, deck.transform);
+    //    prefab.card = this;
+    //}
+
+    public Card(Card card)
     {
-        GameObject deck = GameObject.Find("MyDeck");
-
-        owner = Instantiate(prefab.gameObject, deck.transform);
-        prefab.card = this;
-    }
-
-    public void turnBack()
-    {
-        GameObject rawBackground = owner.transform.Find("raw background").gameObject;
-        bool setup = rawBackground.activeSelf;
-        rawBackground.SetActive(!setup);
-    }
+        artwork = card.artwork;
+        title = card.title;
+        description = card.description;
+        cost = card.cost;
+        hp = card.hp;
+        minDmg = card.minDmg;
+        maxDmg = card.maxDmg;       
+        exp = card.exp;
+}
 
     void Start()
     {
@@ -58,25 +63,9 @@ public class Card : ScriptableObject
         
     }
 
-    public void setRectTransform(RectTransform rectTransform)
-    {
-        RectTransform ownerRect = owner.GetComponent<RectTransform>();
-        //owner.transform.localScale = new Vector3(rectTransform.localScale.x, rectTransform.localScale.y, rectTransform.localScale.z);
-        ownerRect.position = rectTransform.position;
-        ownerRect.localScale = rectTransform.localScale;
-        ownerRect.localRotation = rectTransform.localRotation;
+    
 
-    }
-
-    public void setPosition(Vector3 position)
-    {
-        owner.transform.localPosition = position;
-    }
-
-    public void changeParent(GameObject parent) //change hierarchy position
-    {
-        owner.transform.parent = parent.transform;
-    }
+    
 
     private void OnValidate()
     {
@@ -84,12 +73,12 @@ public class Card : ScriptableObject
         id = AssetDatabase.AssetPathToGUID(path);
     }
 
-    //public Card CreateCardInstance()
-    //{
-    //    GameObject deck = GameObject.Find("MyDeck");
+    public CardDisplay CreateCardInstance(Transform parent)
+    {
+        var instance = Instantiate(prefab,parent);
+        instance.card = Instantiate(this);
 
-    //    owner = Instantiate(prefab.gameObject, deck.transform);
-    //    prefab.card = this;
-    //}
+        return instance;
+    }
 
 }

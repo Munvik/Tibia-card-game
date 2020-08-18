@@ -15,6 +15,8 @@ public class Menager : MonoBehaviour
 
     public Deck myDeck;
     public Hand myHand;
+    public Player myplayer;
+    public Player enemyPlayer;
     int fatigue = 0;
 
     // Start is called before the first frame update
@@ -42,14 +44,10 @@ public class Menager : MonoBehaviour
    
         instance = this;
 
-        foreach(Card card in testDeck.cards)
-        {
-            card.CreateCardInstance(this.transform);
-        }
+        myDeck.initDeck(testDeck.cards);
 
-        //drawCards(5);
-
-
+        drawCards(4);
+        myHand.handCards[1].changeCost(45);
     }
 
     // Update is called once per frame
@@ -77,7 +75,7 @@ public class Menager : MonoBehaviour
 
         for(int i=0; i<number; i++)
         {
-            int currentDeckSize = myDeck.cards.Count;
+            int currentDeckSize = myDeck.displayCards.Count;
             Debug.Log("Decksize = " + currentDeckSize);
 
 

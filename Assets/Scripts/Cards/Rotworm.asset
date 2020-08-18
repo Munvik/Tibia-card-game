@@ -20,4 +20,6 @@ MonoBehaviour:
   minDmg: 0
   maxDmg: 0
   exp: 0
+  id: 9688f24c31a8fb34fb0f0d8b15b8931c
   prefab: {fileID: 237153626416014054, guid: 677fb10dd447876439b9a1fa524f0475, type: 3}
+  owner: {fileID: 0}
