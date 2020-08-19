@@ -113,11 +113,24 @@ public class CardDisplay : Draggable
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("You hit: " + hit.collider.gameObject);
+            PlaygroundArena playground = hit.collider.gameObject.GetComponent<PlaygroundArena>();
+
+            if(playground)
+            {
+                Hand hand = GameObject.Find("MyHand").GetComponent<Hand>();
+
+                if(hand)
+                {
+                    hand.ThrowCardOnTable(this);
+                }
+            }
         }
 
 
-        gameObject.transform.localPosition = startPos;
+        else
+        {
+            gameObject.transform.localPosition = startPos;
+        }
     }
 
 

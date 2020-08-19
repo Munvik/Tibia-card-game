@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour
     public int maxHandSize = 12;
     public bool full = false;
     public RectTransform template;
+    public PlaygroundArena playground;
 
     void Start()
     {
@@ -45,6 +46,12 @@ public class Hand : MonoBehaviour
         Debug.Log("handcards.size = " + handCards.Count);
         card.setRectTransform(template);
         card.setReversed(false);
+    }
+
+    public void ThrowCardOnTable(CardDisplay card)
+    {
+        card.changeParent(playground.transform);
+        playground.PutIn(card);
     }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlaygroundArena : MonoBehaviour
 {
     public List<CardDisplay> cards;
+    public RectTransform template;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,11 @@ public class PlaygroundArena : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PutIn(CardDisplay card)
+    {
+        card.setRectTransform(template);
+        cards.Add(card);
     }
 }
