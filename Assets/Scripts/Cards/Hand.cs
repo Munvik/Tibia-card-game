@@ -13,7 +13,7 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
-        handCards = new List<CardDisplay>();
+        //handCards = new List<CardDisplay>();
     }
 
     // Update is called once per frame
@@ -40,10 +40,11 @@ public class Hand : MonoBehaviour
 
         card.changeParent(transform);
         handCards.Add(card);
+        card.setDraggableEnable(true);
 
         Debug.Log("handcards.size = " + handCards.Count);
         card.setRectTransform(template);
-        card.turnBack();
+        card.setReversed(false);
     }
 
 

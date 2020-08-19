@@ -20,9 +20,14 @@ public class CardShow : MonoBehaviour
 
 
 
-        if(hit != null && hit.collider != null)
-        {
-            Debug.Log(hit.collider.gameObject.name);
-        }
+        //if(hit != null && hit.collider != null)
+        //{
+        //    debug.log(hit.collider.gameobject.name);
+        //}
+    }
+
+    void OnMouseOver()
+    {
+        print(gameObject.name);
     }
 }

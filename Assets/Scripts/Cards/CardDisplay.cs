@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+//THIS IS CARD LOGIC SCRIPT
 
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : Draggable
 {
     public Card card;
 
@@ -19,6 +21,7 @@ public class CardDisplay : MonoBehaviour
         artworkImage.sprite = card.artwork;
         cost.text = card.cost.ToString();
         description.text = card.description;
+        //setDraggableEnable(false);
     }
 
     public void Init(Card card_)
@@ -54,6 +57,12 @@ public class CardDisplay : MonoBehaviour
         rawBackground.SetActive(!setup);
     }
 
+    public void setReversed(bool reversed)
+    {
+        GameObject rawBackground = transform.Find("raw background").gameObject;
+        rawBackground.SetActive(reversed);
+    }
+
     public void setPosition(Vector3 position)
     {
         transform.localPosition = position;
@@ -69,4 +78,47 @@ public class CardDisplay : MonoBehaviour
         card.cost = cost;
         Init(card);
     }
+
+    public void setDraggableEnable(bool enable)
+    {
+        Draggable draggable = GetComponent<Draggable>();
+
+        if (draggable)
+        {
+            draggable.enabled = enable;
+        }
+        else
+            Debug.Log("Cannot find draggable component");
+    }
+    override public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnBeginDragableee");
+        startPos = gameObject.transform.localPosition;
+    }
+
+
+    override public void OnDrag(PointerEventData eventData)
+    {
+        this.transform.position = Input.mousePosition;
+
+
+    }
+
+    override public void OnEndDrag(PointerEventData eventData)
+    {
+       
+
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log("You hit: " + hit.collider.gameObject);
+        }
+
+
+        gameObject.transform.localPosition = startPos;
+    }
+
+
 }

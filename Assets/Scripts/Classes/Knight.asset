@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   hp: 500
-  tibiaCoins: 300
+  tibiaCoinsOnStart: 0
   className: Knight
+  avatarArtwork: {fileID: 21300000, guid: 64bdefdce7bfb544b80ff2bed14e105b, type: 3}

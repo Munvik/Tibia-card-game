@@ -23,23 +23,6 @@ public class Card : ScriptableObject
     
     public GameObject owner;
 
-    //public void CreateCardInstance(Transform parent)
-    //{
-    //    GameObject deck = GameObject.Find("MyDeck");
-
-    //    prefab.card = Instantiate(this);
-    //    owner = Instantiate(prefab.gameObject, parent);
-        
-    //}
-
-    //public void CreateCardInstance()
-    //{
-    //    GameObject deck = GameObject.Find("MyDeck");
-
-    //    owner = Instantiate(prefab.gameObject, deck.transform);
-    //    prefab.card = this;
-    //}
-
     public Card(Card card)
     {
         artwork = card.artwork;
@@ -76,6 +59,7 @@ public class Card : ScriptableObject
     public CardDisplay CreateCardInstance(Transform parent)
     {
         var instance = Instantiate(prefab,parent);
+        
         instance.card = Instantiate(this);
 
         return instance;

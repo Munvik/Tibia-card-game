@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sorcerer
   m_EditorClassIdentifier: 
   hp: 0
-  tibiaCoins: 0
+  tibiaCoinsOnStart: 0
   className: 
+  avatarArtwork: {fileID: 21300000, guid: 2044f889807a63c4ea9ed8d542e18771, type: 3}

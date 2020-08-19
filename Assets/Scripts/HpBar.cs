@@ -6,7 +6,7 @@ public class HpBar : MonoBehaviour
 {
     public RectTransform greenBar;
     public int maxhp { get; set; } //max hp
-    int hp;
+    int currentHp;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class HpBar : MonoBehaviour
     public void init(int hp)
     {
         maxhp = hp;
-        this.hp = hp;
+        currentHp = hp;
     }
 
     // Update is called once per frame
@@ -27,6 +27,13 @@ public class HpBar : MonoBehaviour
 
     public void substract(int hp)
     {
+        currentHp -= hp;
+
+        if (currentHp < 0)
+            currentHp = 0;
+
+        float width = (float)currentHp / (float)maxhp * 100;
+        greenBar.sizeDelta = new Vector2(width, greenBar.sizeDelta.y);
 
     }
 }

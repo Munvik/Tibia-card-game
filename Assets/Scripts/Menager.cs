@@ -22,7 +22,7 @@ public class Menager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        myplayer.TakeDamage(100);
     }
 
     public Menager(Deck ownDeck, int enemyDeckSize, int enemyHandSize)
@@ -48,7 +48,11 @@ public class Menager : MonoBehaviour
 
         drawCards(4);
         myHand.handCards[1].changeCost(45);
+
+        
     }
+
+
 
     // Update is called once per frame
     void Update()

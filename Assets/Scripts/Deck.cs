@@ -34,7 +34,7 @@ public class Deck : MonoBehaviour
         CardDisplay newestCard = getTop();
 
         newestCard.setRectTransform(templateCard);
-        newestCard.turnBack();
+        newestCard.setReversed(true);
 
         float x = templateCard.position.x + displayCards.Count * stackOffset.x;
         float y = templateCard.position.y + displayCards.Count * stackOffset.y;
@@ -51,7 +51,7 @@ public class Deck : MonoBehaviour
         foreach(Card card in cards_)
         {
             var newest = card.CreateCardInstance(transform);
-            
+            newest.setDraggableEnable(false);
             newest.Init(newest.card);
             shuffleInto(newest);           
         }
