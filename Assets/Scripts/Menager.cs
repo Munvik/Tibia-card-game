@@ -18,6 +18,10 @@ public class Menager : MonoBehaviour
     public Player myplayer;
     public Player enemyPlayer;
     int fatigue = 0;
+    public Wallet myWallet;
+    public Wallet enemyWallet;
+    public PlaygroundArena myPlayground;
+    public PlaygroundArena enemyPlayground;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +38,11 @@ public class Menager : MonoBehaviour
 
     }
 
+    ~Menager()
+    {
+        instance = null;
+    }
+
     private void Awake()
     {
 
@@ -46,7 +55,7 @@ public class Menager : MonoBehaviour
 
         myDeck.initDeck(testDeck.cards);
 
-        drawCards(4);
+        drawCards(10);
         myHand.handCards[1].changeCost(45);
 
         
@@ -115,6 +124,23 @@ public class Menager : MonoBehaviour
             Debug.Log("Cards with testing deck id = " + card.GetInstanceID());
         }
     }
+
+    public bool CanThrowCardOnBoard(CardDisplay card)
+    {
+        if (myPlayground.full)
+        {
+            Debug.Log("Playground is full");
+            return false;
+        }
+        else if (myWallet.coins < card.card.cost)
+        {
+            Debug.Log("No coins needed!");
+            return false;
+        }
+
+            return true;
+    }
+
 
 
 }

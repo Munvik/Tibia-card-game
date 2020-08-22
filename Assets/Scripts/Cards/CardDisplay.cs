@@ -70,7 +70,8 @@ public class CardDisplay : Draggable
 
     public void changeParent(Transform parent) //change hierarchy position
     {
-        transform.parent = parent;
+        //transform.parent = parent;
+        transform.SetParent(parent);
     }
 
     public void changeCost(int cost)
@@ -106,31 +107,28 @@ public class CardDisplay : Draggable
 
     override public void OnEndDrag(PointerEventData eventData)
     {
-       
+        Hand hand = GameObject.Find("MyHand").GetComponent<Hand>();
 
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (!hand)
         {
-            PlaygroundArena playground = hit.collider.gameObject.GetComponent<PlaygroundArena>();
+            Debug.Log("Cannot find Myhand component");
+        }
 
-            if(playground)
+        GameObject myArena = GameObject.Find("My Playground Arena");
+
+        if(MenagerPhysics.MouseIsOn(myArena))
+        {
+            Hand myhand = GameObject.Find("MyHand").GetComponent<Hand>();
+
+            if(Menager.instance.CanThrowCardOnBoard(this))
             {
-                Hand hand = GameObject.Find("MyHand").GetComponent<Hand>();
-
-                if(hand)
-                {
-                    hand.ThrowCardOnTable(this);
-                }
+                myhand.ThrowCardOnTable(this);
+                return;
             }
         }
 
 
-        else
-        {
-            gameObject.transform.localPosition = startPos;
-        }
+        gameObject.transform.localPosition = startPos;
     }
 
 

@@ -6,6 +6,9 @@ public class PlaygroundArena : MonoBehaviour
 {
     public List<CardDisplay> cards;
     public RectTransform template;
+
+    public int maxCards = 9;
+    public bool full = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +25,10 @@ public class PlaygroundArena : MonoBehaviour
     {
         card.setRectTransform(template);
         cards.Add(card);
+        
+        if(cards.Count == maxCards)
+        {
+            full = true;
+        }
     }
 }

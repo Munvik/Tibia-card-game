@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         avatarArtwork.sprite = vocation.avatarArtwork;
         hpbar.init(vocation.hp);
         hp = vocation.hp;
+        Menager.instance.myWallet.Init(vocation.tibiaCoinsOnStart);
     }
 
     // Update is called once per frame

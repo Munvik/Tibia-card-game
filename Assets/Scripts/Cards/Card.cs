@@ -33,7 +33,9 @@ public class Card : ScriptableObject
         minDmg = card.minDmg;
         maxDmg = card.maxDmg;       
         exp = card.exp;
-}
+    }
+
+    
 
     void Start()
     {
@@ -45,8 +47,6 @@ public class Card : ScriptableObject
     {
         
     }
-
-    
 
     
 

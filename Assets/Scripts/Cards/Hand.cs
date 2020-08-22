@@ -11,6 +11,7 @@ public class Hand : MonoBehaviour
     public bool full = false;
     public RectTransform template;
     public PlaygroundArena playground;
+    public Wallet myWallet;
 
     void Start()
     {
@@ -52,7 +53,9 @@ public class Hand : MonoBehaviour
     {
         card.changeParent(playground.transform);
         playground.PutIn(card);
+        card.setDraggableEnable(false);
+        Menager.instance.myWallet.SpendCoins(card.card.cost);
     }
 
-
+    
 }
