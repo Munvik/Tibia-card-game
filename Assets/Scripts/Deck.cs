@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class Deck : MonoBehaviour
 {
@@ -43,7 +44,6 @@ public class Deck : MonoBehaviour
         newestCard.setPosition(newPosition);
 
     }
-
 
     public void initDeck(List<Card> cards_) //zainicjowanie stosu talii na pcozatku gry
     {

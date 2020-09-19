@@ -2,34 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     public PlayerClass vocation;
     public HpBar hpbar;
     int hp;
     public Image avatarArtwork;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    private void Awake()
+
+    // Start is called before the first frame update
+    public override void OnStartClient()
     {
-        Debug.Log("Siema");
+        base.OnStartClient();
+    
+    
+        
         avatarArtwork.sprite = vocation.avatarArtwork;
         hpbar.init(vocation.hp);
-        hp = vocation.hp;
-        Menager.instance.myWallet.Init(vocation.tibiaCoinsOnStart);
+        //hp = vocation.hp;
+        //Menager.getInstance().myWallet.Init(vocation.tibiaCoinsOnStart);
+
+        //Debug.Log(Menager.instance.GetInstanceID());
     }
 
-    // Update is called once per frame
-    void Update()
+    [Server]
+    public override void OnStartServer()
     {
-        
+        Debug.Log("Siema z player");
     }
+
 
     public void TakeDamage(int damage)
     {

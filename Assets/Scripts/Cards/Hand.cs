@@ -54,7 +54,6 @@ public class Hand : MonoBehaviour
         card.changeParent(playground.transform);
         playground.PutIn(card);
         card.setDraggableEnable(false);
-        Menager.instance.myWallet.SpendCoins(card.card.cost);
     }
 
     

@@ -22,4 +22,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Debug.Log("OnEndDrag");
     }
+
+    public void setDraggableEnable(bool enable)
+    {
+        this.enabled = enable;
+    }
 }

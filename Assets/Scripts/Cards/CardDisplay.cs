@@ -17,6 +17,7 @@ public class CardDisplay : Draggable
     // Start is called before the first frame update
     void Start()
     {
+        
         title.text = card.title;
         artworkImage.sprite = card.artwork;
         cost.text = card.cost.ToString();
@@ -80,17 +81,17 @@ public class CardDisplay : Draggable
         Init(card);
     }
 
-    public void setDraggableEnable(bool enable)
-    {
-        Draggable draggable = GetComponent<Draggable>();
+    //public void setDraggableEnable(bool enable)
+    //{
+    //    Draggable draggable = GetComponent<Draggable>();
 
-        if (draggable)
-        {
-            draggable.enabled = enable;
-        }
-        else
-            Debug.Log("Cannot find draggable component");
-    }
+    //    if (draggable)
+    //    {
+    //        draggable.enabled = enable;
+    //    }
+    //    else
+    //        Debug.Log("Cannot find draggable component");
+    //}
     override public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDragableee");
@@ -119,12 +120,6 @@ public class CardDisplay : Draggable
         if(MenagerPhysics.MouseIsOn(myArena))
         {
             Hand myhand = GameObject.Find("MyHand").GetComponent<Hand>();
-
-            if(Menager.instance.CanThrowCardOnBoard(this))
-            {
-                myhand.ThrowCardOnTable(this);
-                return;
-            }
         }
 
 
