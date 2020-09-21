@@ -18,6 +18,10 @@ public class ServerManager : NetworkBehaviour
     [SerializeField]
     private Deck enemyDeck;
 
+    
+    public Deck myTestDeck;
+    public Deck enemyTestDeck;
+
     //public Deck myDeck;
     //public Deck enemyDeck;
     //public Hand myHand;
@@ -32,72 +36,30 @@ public class ServerManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        //GameObject[] AllGo;
-        //AllGo = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-
-        //foreach(GameObject GO in AllGo)
-        //{
-        //    Debug.Log("Object name = " +GO.name);
-        //}
-
-
-        //Debug.Log("Hello from [Server] Manager::OnStartServer()");
-
-        //myDeck = GameObject.Find("MyDeck").GetComponent<Deck>();
-        //enemyDeck = GameObject.Find("EnemyDeck").GetComponent<Deck>();
-        //myHand = GameObject.Find("MyHand").GetComponent<Hand>();
-        //enemyHand = GameObject.Find("EnemyHand").GetComponent<Hand>();
-        //myPlayer = GameObject.Find("MyPlayer").GetComponent<Player>();
-        //enemyPlayer = GameObject.Find("EnemyPlayer").GetComponent<Player>();
-        //myWallet = GameObject.Find("MyWallet").GetComponent<Wallet>();
-        //enemyWallet = GameObject.Find("EnemyWallet").GetComponent<Wallet>();
-        //myPlayground = GameObject.Find("MyPlagroundArena").GetComponent<PlaygroundArena>();
-        //enemyPlayground = GameObject.Find("EnemyPlagroundArena").GetComponent<PlaygroundArena>();
-
-
-        Debug.Log("Hello spawn here");
-
-        CmdSpawnCard();
+        SpawnCard();
+        InitDecks();
     }
 
-    [Command]
-    public void CmdSpawnCard()
+    private void InitDecks()
     {
-        cardPrefab.Init(testDeck.cards[3]);
-        CardDisplay card = Instantiate(cardPrefab);
-        NetworkServer.Spawn(cardPrefab.gameObject);
+        Debug.Log("hello from ServerManager");
+        myDeck.initDeck(myTestDeck.cards, cardPrefab);
     }
 
-
-
-    //[Server]
-    //public override void OnStartServer()
-    //{
-    //    //List<Card> mycards = new List<Card>();
-    //    //List<Card> enemycards = new List<Card>();
-
-    //    //for (int i = 0; i < 5; i++)
-    //    //{
-    //    //    Card card = testDeck.cards[Random.Range(0, testDeck.cards.Count)];
-    //    //    mycards.Add(card);
-
-    //    //    Card card2 = testDeck.cards[Random.Range(0, testDeck.cards.Count)];
-    //    //    enemycards.Add(card2);
-    //    //}
-
-    //    //myDeck.initDeck(mycards);
-    //    //enemyDeck.initDeck(enemycards);
-    //    Debug.Log("Hello from server");
-    //}
+    public void SpawnCard()
+    {
+        Debug.Log("hi from cmd");
+        cardPrefab.Init(testDeck.cards[2]);
+        CardDisplay card = Instantiate(cardPrefab, myDeck.transform);
+        NetworkServer.Spawn(card.gameObject);
+    
+    }
 
     
 
-    //public Menager(Deck ownDeck, int enemyDeckSize, int enemyHandSize)
-    //{
-    //    enemyDeckCardsnumber = enemyDeckSize;
-    //    enemyhandCardsNumber = enemyHandSize;
 
-    //}
+
+
 
     //private void shuffleDeck(Deck deck)
     //{

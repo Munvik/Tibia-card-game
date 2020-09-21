@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Mirror;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
     public Vector3 startPos;

@@ -16,8 +16,7 @@ public class CardDisplay : Draggable
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {  
         title.text = card.title;
         artworkImage.sprite = card.artwork;
         cost.text = card.cost.ToString();
@@ -45,6 +44,7 @@ public class CardDisplay : Draggable
     {
         RectTransform ownerRect = GetComponent<RectTransform>();
         //owner.transform.localScale = new Vector3(rectTransform.localScale.x, rectTransform.localScale.y, rectTransform.localScale.z);
+        Debug.Log(rectTransform.localScale);
         ownerRect.position = rectTransform.position;
         ownerRect.localScale = rectTransform.localScale;
         ownerRect.localRotation = rectTransform.localRotation;
