@@ -21,7 +21,7 @@ public class Deck : NetworkBehaviour
         
         newestCard.setRectTransform(templateCard);
         newestCard.setReversed(true);
-        newestCard.changeParent(transform);
+        //newestCard.changeParent(transform);
 
         float x = templateCard.position.x + displayCards.Count * stackOffset.x;
         float y = templateCard.position.y + displayCards.Count * stackOffset.y;
@@ -38,7 +38,7 @@ public class Deck : NetworkBehaviour
         {
 
             
-            CardDisplay cardToSpawn = Instantiate(cardPrefab);
+            CardDisplay cardToSpawn = Instantiate(cardPrefab, transform);
             cardToSpawn.Init(card);
             NetworkServer.Spawn(cardToSpawn.gameObject);
             cardToSpawn.setDraggableEnable(false);

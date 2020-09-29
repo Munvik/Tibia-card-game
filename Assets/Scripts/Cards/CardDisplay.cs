@@ -10,7 +10,7 @@ public class CardDisplay : Draggable
     public Card card;
 
     public Text title;
-    public Image artworkImage;
+    public Sprite artworkImage;
     public Text cost;
     public Text description;
 
@@ -18,7 +18,7 @@ public class CardDisplay : Draggable
     void Start()
     {  
         title.text = card.title;
-        artworkImage.sprite = card.artwork;
+        artworkImage= card.artwork;
         cost.text = card.cost.ToString();
         description.text = card.description;
         //setDraggableEnable(false);
@@ -29,7 +29,7 @@ public class CardDisplay : Draggable
         card = card_;
 
         title.text = card.title;
-        artworkImage.sprite = card.artwork;
+        artworkImage = card.artwork;
         cost.text = card.cost.ToString();
         description.text = card.description;
     }
