@@ -7,8 +7,9 @@ using Mirror;
 //Server manager
 public class ServerManager : NetworkBehaviour
 {
-    int enemyDeckCardsnumber;
+    private int enemyDeckCardsnumber;
     int enemyhandCardsNumber;
+
     public CardDisplay cardPrefab;
     public Deck testDeck; //na potrzeby testow
 
@@ -18,25 +19,36 @@ public class ServerManager : NetworkBehaviour
     [SerializeField]
     private Deck enemyDeck;
 
-    
-    public Deck myTestDeck;
-    public Deck enemyTestDeck;
 
-    //public Deck myDeck;
-    //public Deck enemyDeck;
-    //public Hand myHand;
-    //public Hand enemyHand;
-    //public Player myPlayer;
-    //public Player enemyPlayer;
-    //int fatigue = 0;
-    //public Wallet myWallet;
-    //public Wallet enemyWallet;
-    //public PlaygroundArena myPlayground;
-    //public PlaygroundArena enemyPlayground;
+    [SerializeField]
+    private Deck myTestDeck;
+    [SerializeField]
+    private Deck enemyTestDeck;
+
+    [SerializeField]
+    private Hand myHand;
+    [SerializeField]
+    private Hand enemyHand;
+    [SerializeField]
+    private Player myPlayer;
+    [SerializeField]
+    private Player enemyPlayer;
+    [SerializeField]
+    private Wallet myWallet;
+    [SerializeField]
+    private Wallet enemyWallet;
+    [SerializeField]
+    private PlaygroundArena myPlayground;
+    [SerializeField]
+    private PlaygroundArena enemyPlayground;
+    [SerializeField]
+
+
 
     public override void OnStartServer()
     {
-        SpawnCard();
+        myDeck.Init(this);
+        enemyDeck.Init(this);
         InitDecks();
     }
 
@@ -46,19 +58,18 @@ public class ServerManager : NetworkBehaviour
         myDeck.initDeck(myTestDeck.cards, cardPrefab);
     }
 
-    public void SpawnCard()
+    [ClientRpc]
+    public void RpcChangeParent(GameObject card, Transform parent)
     {
-        Debug.Log("hi from cmd");
-        cardPrefab.Init(testDeck.cards[2]);
-        CardDisplay card = Instantiate(cardPrefab, myDeck.transform);
-        NetworkServer.Spawn(card.gameObject);
-    
+        Debug.Log("rpc");
+
+        if(hasAuthority)
+        card.transform.SetParent(myDeck.transform);
+        else
+        {
+            card.transform.SetParent(enemyDeck.transform);
+        }
     }
-
-    
-
-
-
 
 
     //private void shuffleDeck(Deck deck)

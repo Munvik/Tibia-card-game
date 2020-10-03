@@ -17,11 +17,7 @@ public class CardDisplay : Draggable
     // Start is called before the first frame update
     void Start()
     {  
-        title.text = card.title;
-        artworkImage= card.artwork;
-        cost.text = card.cost.ToString();
-        description.text = card.description;
-        //setDraggableEnable(false);
+        
     }
 
     public void Init(Card card_)

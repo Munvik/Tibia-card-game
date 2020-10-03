@@ -9,7 +9,14 @@ public class Deck : NetworkBehaviour
     public List<CardDisplay> displayCards;
 
     public RectTransform templateCard;
-    public Vector3 stackOffset = new Vector3(100f, 100f, 20f);
+    public Vector3 stackOffset = new Vector3(0f, 0f, 0f);
+
+    private ServerManager serverManager;
+
+    public void Init(ServerManager serverManager)
+    {
+        this.serverManager = serverManager;
+    }
 
 
 
@@ -21,7 +28,7 @@ public class Deck : NetworkBehaviour
         
         newestCard.setRectTransform(templateCard);
         newestCard.setReversed(true);
-        //newestCard.changeParent(transform);
+        serverManager.RpcChangeParent(newestCard.gameObject, this.transform);
 
         float x = templateCard.position.x + displayCards.Count * stackOffset.x;
         float y = templateCard.position.y + displayCards.Count * stackOffset.y;
@@ -35,13 +42,10 @@ public class Deck : NetworkBehaviour
     {
         
         foreach(Card card in cards_)
-        {
-
-            
-            CardDisplay cardToSpawn = Instantiate(cardPrefab, transform);
+        {           
+            CardDisplay cardToSpawn = Instantiate(cardPrefab);
             cardToSpawn.Init(card);
-            NetworkServer.Spawn(cardToSpawn.gameObject);
-            cardToSpawn.setDraggableEnable(false);
+            NetworkServer.Spawn(cardToSpawn.gameObject, connectionToClient);
             shuffleInto(cardToSpawn);           
         }
     }
@@ -50,6 +54,8 @@ public class Deck : NetworkBehaviour
     {
         return displayCards[displayCards.Count - 1];
     }
+
+    
 
 
 }

@@ -30,7 +30,7 @@ public class NetworkCardGameManager : NetworkManager
             StartGame();
         }
     }
-
+  
     void StartGame()
     {
         Debug.Log("StartGame()");

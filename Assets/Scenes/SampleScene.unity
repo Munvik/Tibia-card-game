@@ -442,7 +442,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1510282875}
+    m_TransformParent: {fileID: 1510282873}
     m_Modifications:
     - target: {fileID: -3599055859090715868, guid: a1c5f0dde730d3940a0d7d5ddc56112c,
         type: 3}
@@ -822,7 +822,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1510282875}
+    m_TransformParent: {fileID: 1510282873}
     m_Modifications:
     - target: {fileID: -7305556355220584038, guid: 444559482b8df0a43865c5443c154e07,
         type: 3}
@@ -1011,7 +1011,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1510282875}
+    m_TransformParent: {fileID: 1510282873}
     m_Modifications:
     - target: {fileID: 6405973786986826474, guid: b05dac0cc9ee59140ae2800240327945,
         type: 3}
@@ -1138,7 +1138,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1510282875}
+    m_TransformParent: {fileID: 1510282873}
     m_Modifications:
     - target: {fileID: -7305556355220584038, guid: 444559482b8df0a43865c5443c154e07,
         type: 3}
@@ -1441,7 +1441,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1510282875}
+  - component: {fileID: 1510282873}
   m_Layer: 0
   m_Name: PlaygroundArena
   m_TagString: Untagged
@@ -1449,15 +1449,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1510282875
-RectTransform:
+--- !u!4 &1510282873
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510282872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: -200.8, y: -32.3, z: 2}
   m_LocalScale: {x: 0.5801332, y: 0.5801332, z: 1}
   m_Children:
   - {fileID: 565172341}
@@ -1469,17 +1469,12 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -200.8, y: -32.3}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1827483771
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1510282875}
+    m_TransformParent: {fileID: 1510282873}
     m_Modifications:
     - target: {fileID: -2591133679588710201, guid: c87928d3cb984b04bb89b2fca64a71b1,
         type: 3}
@@ -2593,7 +2588,7 @@ RectTransform:
   m_GameObject: {fileID: 5677336140964024932}
   m_LocalRotation: {x: -0.000000014901159, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.017864868, y: 0.02951587, z: 0.5901986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5677336140964024846}
   m_Father: {fileID: 7790833462266413830}
@@ -2818,7 +2813,7 @@ MonoBehaviour:
   syncInterval: 0.1
   cards: []
   displayCards: []
-  templateCard: {fileID: 0}
+  templateCard: {fileID: 5677336140964024851}
   stackOffset: {x: 10, y: 5, z: 0}
 --- !u!224 &7790833462266413830
 RectTransform:
@@ -2829,10 +2824,10 @@ RectTransform:
   m_GameObject: {fileID: 7790833462266413831}
   m_LocalRotation: {x: 0.0000012516974, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.021098087, y: 0.035163485, z: 1.0426532}
+  m_LocalScale: {x: 0.030699529, y: 0.051165886, z: 1.5171498}
   m_Children:
   - {fileID: 5677336140964024851}
-  m_Father: {fileID: 1510282875}
+  m_Father: {fileID: 1510282873}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 24.733, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
