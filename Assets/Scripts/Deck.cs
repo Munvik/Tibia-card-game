@@ -11,9 +11,9 @@ public class Deck : NetworkBehaviour
     public RectTransform templateCard;
     public Vector3 stackOffset = new Vector3(0f, 0f, 0f);
 
-    private ServerManager serverManager;
+    public ServerManager serverManager;
 
-    public CardDisplay prefab;
+    public GameObject prefab;
 
     public void Init(ServerManager serverManager)
     {
@@ -27,14 +27,10 @@ public class Deck : NetworkBehaviour
         displayCards.Add(card);
         Debug.Log("getTop() = " + getTop().GetInstanceID());
         
-        CardDisplay newestCard = getTop();
-        
-
+        CardDisplay newestCard = getTop();     
         newestCard.setRectTransform(templateCard);
         newestCard.setReversed(true);
-        Debug.Log("newestCard.gameobject = " + newestCard.gameObject.GetInstanceID());
         serverManager.RpcChangeParent(newestCard.gameObject);
-
 
         float x = templateCard.position.x + displayCards.Count * stackOffset.x;
         float y = templateCard.position.y + displayCards.Count * stackOffset.y;
@@ -49,11 +45,11 @@ public class Deck : NetworkBehaviour
         
         foreach(Card card in cards_)
         {           
-            CardDisplay cardToSpawn = Instantiate(prefab);
-            cardToSpawn.Init(card);
-            NetworkServer.Spawn(cardToSpawn.gameObject, connectionToClient);
-            Debug.Log("Po spawnie id = " + cardToSpawn.GetInstanceID());
-            shuffleInto(cardToSpawn);           
+            GameObject cardToSpawn = Instantiate(prefab);
+            CardDisplay cardDisplay = cardToSpawn.GetComponent<CardDisplay>();
+            cardDisplay.Init(card);
+            NetworkServer.Spawn(cardToSpawn, connectionToClient);
+            shuffleInto(cardDisplay);           
         }
     }
 

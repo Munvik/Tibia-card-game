@@ -10,7 +10,6 @@ public class NetworkCardGameManager : NetworkManager
     override public void Start()
     {
         base.Start();
-
     }
 
     public override void OnStartServer()
@@ -34,15 +33,12 @@ public class NetworkCardGameManager : NetworkManager
         if (numPlayers == 2)
         {
             StartGame();
-        }
-
-    
+        }    
     }
-  
+
     void StartGame()
     {
         Debug.Log("StartGame()");
         serverManager.DealCards();
     }
-
 }
