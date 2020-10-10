@@ -38,6 +38,7 @@ public class CardDisplay : Draggable
 
     public void setRectTransform(RectTransform rectTransform)
     {
+        Debug.Log("SetRectTransform()");
         RectTransform ownerRect = GetComponent<RectTransform>();
         //owner.transform.localScale = new Vector3(rectTransform.localScale.x, rectTransform.localScale.y, rectTransform.localScale.z);
         Debug.Log(rectTransform.localScale);

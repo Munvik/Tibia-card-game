@@ -47,28 +47,40 @@ public class ServerManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        myDeck.Init(this);
-        enemyDeck.Init(this);
-        InitDecks();
+
     }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        Debug.Log("OnStartClient()");
+    }
+
 
     private void InitDecks()
     {
-        Debug.Log("hello from ServerManager");
-        myDeck.initDeck(myTestDeck.cards, cardPrefab);
+        Debug.Log("hello from ServerManager::InitDecks()");
+        myDeck.InitDeck(myTestDeck.cards);
     }
 
     [ClientRpc]
-    public void RpcChangeParent(GameObject card, Transform parent)
+    public void RpcChangeParent(GameObject card)
     {
         Debug.Log("rpc");
 
         if(hasAuthority)
-        card.transform.SetParent(myDeck.transform);
+            card.transform.SetParent(myDeck.transform);
         else
         {
             card.transform.SetParent(enemyDeck.transform);
-        }
+        }      
+    }
+
+
+    public void DealCards()
+    {
+        Debug.Log("ServerManager::DealCards()");
+        InitDecks();
     }
 
 

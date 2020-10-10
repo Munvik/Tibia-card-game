@@ -13,6 +13,8 @@ public class Deck : NetworkBehaviour
 
     private ServerManager serverManager;
 
+    public CardDisplay prefab;
+
     public void Init(ServerManager serverManager)
     {
         this.serverManager = serverManager;
@@ -23,29 +25,34 @@ public class Deck : NetworkBehaviour
     public void shuffleInto(CardDisplay card)
     {
         displayCards.Add(card);
-        Debug.Log("From shuffleinto and the newest card has id = " + getTop().GetInstanceID());
+        Debug.Log("getTop() = " + getTop().GetInstanceID());
+        
         CardDisplay newestCard = getTop();
         
+
         newestCard.setRectTransform(templateCard);
         newestCard.setReversed(true);
-        serverManager.RpcChangeParent(newestCard.gameObject, this.transform);
+        Debug.Log("newestCard.gameobject = " + newestCard.gameObject.GetInstanceID());
+        serverManager.RpcChangeParent(newestCard.gameObject);
+
 
         float x = templateCard.position.x + displayCards.Count * stackOffset.x;
         float y = templateCard.position.y + displayCards.Count * stackOffset.y;
         float z = templateCard.position.z + displayCards.Count * stackOffset.z;
         Vector3 newPosition = new Vector3(x, y, z);
         newestCard.setPosition(newPosition);
-
     }
 
-    public void initDeck(List<Card> cards_, CardDisplay cardPrefab) //zainicjowanie stosu talii na pcozatku gry
+    public void InitDeck(List<Card> cards_) //zainicjowanie stosu talii na pcozatku gry
     {
+        Debug.Log("Deck::InitDeck()");
         
         foreach(Card card in cards_)
         {           
-            CardDisplay cardToSpawn = Instantiate(cardPrefab);
+            CardDisplay cardToSpawn = Instantiate(prefab);
             cardToSpawn.Init(card);
             NetworkServer.Spawn(cardToSpawn.gameObject, connectionToClient);
+            Debug.Log("Po spawnie id = " + cardToSpawn.GetInstanceID());
             shuffleInto(cardToSpawn);           
         }
     }

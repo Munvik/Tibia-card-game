@@ -3,12 +3,14 @@ using Mirror;
 
 public class NetworkCardGameManager : NetworkManager
 {
-    GameObject menager;
+    [SerializeField]
+    private ServerManager serverManager;
+    public ServerManager ServerManager => serverManager;
 
     override public void Start()
     {
         base.Start();
-        Debug.Log("Hej");
+
     }
 
     public override void OnStartServer()
@@ -18,10 +20,14 @@ public class NetworkCardGameManager : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
+        if (numPlayers > 2)
+            return;
+
         // add player 
         GameObject player = Instantiate(playerPrefab);
         NetworkServer.AddPlayerForConnection(conn, player);
 
+        Debug.Log("Is network connection ready? " + conn.isReady);
         
         Debug.Log("Yea we have " + numPlayers + "on scene");
 
@@ -29,12 +35,14 @@ public class NetworkCardGameManager : NetworkManager
         {
             StartGame();
         }
+
+    
     }
   
     void StartGame()
     {
         Debug.Log("StartGame()");
-
+        serverManager.DealCards();
     }
 
 }
