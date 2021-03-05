@@ -26,3 +26,5 @@ int number = 3;
 *Example of italic line* 
 
 **Example of bold line**
+
+~~Example of scratch line~~
