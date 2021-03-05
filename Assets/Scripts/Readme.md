@@ -21,6 +21,5 @@ int number = 3;
 1. First ordered list item
 2. Another item
 * Unordered sub-list. 
-* Second unordered item
 1. Actual numbers don't matter, just that it's a number
 4. And another item.
