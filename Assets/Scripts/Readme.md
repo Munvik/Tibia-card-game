@@ -19,7 +19,8 @@ int number = 3;
 
 
 
-* Unordered 1 sub-list item. 
-* Unordered 2 sub-list item. 
-* Unordered 3 sub-list item. 
+1. First ordered list item
+2. Another item
+3. Third item
 
+**Here we have bold**
