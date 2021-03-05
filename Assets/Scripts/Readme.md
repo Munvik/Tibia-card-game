@@ -23,4 +23,5 @@ int number = 3;
 2. Another item
 3. Third item
 
-**Here we have bold**
+*Example of italic line*
+**Example of bold line**
