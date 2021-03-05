@@ -18,8 +18,8 @@ int number = 3;
 ###### H6
 
 
-1. First ordered list item
-2. Another item
-* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-4. And another item.
+
+* Unordered 1 sub-list item. 
+* Unordered 2 sub-list item. 
+* Unordered 3 sub-list item. 
+
