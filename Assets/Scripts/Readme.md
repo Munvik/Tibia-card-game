@@ -18,5 +18,5 @@ int number = 3;
 ###### H6
 
 
-⋅⋅* Unordered sub-list. 
+* Unordered sub-list. 
 
